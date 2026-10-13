@@ -1,0 +1,92 @@
+my-shop/
+├── prisma/
+│   └── schema.prisma              # ساختار جداول دیتابیس (User, Product, Order)
+├── public/
+│   └── images/
+├── src/
+│   ├── app/                       # فقط و فقط Routing و Layout
+│   │   ├── (auth)/                # گروه صفحات لاگین و ثبت‌نام
+│   │   │   ├── login/
+│   │   │   │   └── page.tsx
+│   │   │   └── register/
+│   │   │       └── page.tsx
+│   │   ├── (admin)/               # پنل مدیریت تفکیک‌شده
+│   │   │   └── admin/
+│   │   │       ├── layout.tsx     # سایدبار و هدر ادمین
+│   │   │       ├── page.tsx       # داشبورد
+│   │   │       └── products/
+│   │   │           ├── page.tsx   # جدول محصولات
+│   │   │           └── new/
+│   │   │               └── page.tsx # فرم ساخت محصول
+│   │   ├── (shop)/                # صفحات عمومی فروشگاه
+│   │   │   ├── layout.tsx
+│   │   │   ├── page.tsx           # لندینگ پیج
+│   │   │   ├── about/
+│   │   │   │   └── page.tsx
+│   │   │   ├── products/
+│   │   │   │   ├── layout.tsx     # مدیریت مودال و صفحه محصولات
+│   │   │   │   ├── page.tsx       # کاتالوگ محصولات
+│   │   │   │   ├── [slug]/
+│   │   │   │   │   └── page.tsx   # صفحه کامل محصول (حالت رفرش یا لینک مستقیم)
+│   │   │   │   └── @modal/
+│   │   │   │       └── (.)[slug]/
+│   │   │   │           └── page.tsx # مودال شناور جزئیات محصول
+│   │   │   └── cart/
+│   │   │       └── page.tsx
+│   │   ├── api/
+│   │   │   └── auth/
+│   │   │       └── [...nextauth]/ # اندپوینت Auth.js
+│   │   │           └── route.ts
+│   │   ├── layout.tsx             # روت لایوت کل سایت (تم پرووایدر، فونت‌ها)
+│   │   └── globals.css
+│   │
+│   ├── features/                  # قلب لاجیک پروژه (Feature-Based)
+│   │   ├── auth/
+│   │   │   ├── actions.ts         # سرور اکشن‌های ورود/خروج
+│   │   │   ├── schemas.ts         # اعتبارسنجی Zod لاگین و ثبت‌نام
+│   │   │   └── components/
+│   │   │       ├── LoginForm.tsx
+│   │   │       └── RegisterForm.tsx
+│   │   ├── products/
+│   │   │   ├── actions.ts         # سرور اکشن‌های ساخت/ویرایش/حذف محصول
+│   │   │   ├── queries.ts         # فچ‌های مستقیم دیتابیس برای RSCها
+│   │   │   ├── schemas.ts         # Zod اسکیما برای محصول
+│   │   │   ├── types.ts
+│   │   │   └── components/
+│   │   │       ├── ProductCard.tsx
+│   │   │       ├── ProductGrid.tsx
+│   │   │       ├── ProductCarousel.tsx # با Embla Carousel
+│   │   │       ├── ProductModal.tsx
+│   │   │       └── admin/
+│   │   │           ├── ProductTable.tsx
+│   │   │           └── ProductForm.tsx
+│   │   └── cart/
+│   │       ├── components/
+│   │       └── types.ts
+│   │
+│   ├── shared/                    # کدهای مشترک بدون وابستگی به فیچر خاص
+│   │   ├── components/            # کامپوننت‌های پایه UI (دکمه، اینپوت، مودال و...)
+│   │   │   ├── ui/
+│   │   │   │   ├── Button.tsx
+│   │   │   │   ├── Input.tsx
+│   │   │   │   └── Modal.tsx
+│   │   │   ├── Navbar.tsx
+│   │   │   └── ThemeToggle.tsx
+│   │   ├── lib/
+│   │   │   ├── prisma.ts          # کلاینت یگانه Prisma
+│   │   │   ├── supabase.ts        # کلاینت Storage برای عکس‌ها
+│   │   │   ├── auth.ts            # کانفیگ اصلی Auth.js v5
+│   │   │   └── utils.ts           # تابع cn (clsx + tailwind-merge)
+│   │   └── types/
+│   │
+│   ├── stores/                    # استیت‌های سمت کلاینت با Zustand
+│   │   ├── theme.store.ts         # استیت دارک مود (یا تم)
+│   │   └── cart.store.ts          # استیت سبد خرید کلاینتی
+│   │
+│   └── middleware.ts              # محافظت از روت‌های ادمین و سشن کاربر
+│
+├── .env.example
+├── next.config.ts
+├── package.json
+├── tailwind.config.ts
+└── tsconfig.json
